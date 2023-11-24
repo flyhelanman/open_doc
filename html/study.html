@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="referrer" content="no-referrer">
+    <title>xgplayer</title>
+    <style type="text/css">
+      html, body {width:100%;height:100%;margin:auto;overflow: hidden;}
+    </style>
+  </head>
+  <body>
+	<input type="text" placeHolder="输入链接" id="myInput">
+	<button id="playBtn">观看</button>
+    <div id="mse"></div>
+	<link rel="stylesheet" href="https://unpkg.byted-static.com/xgplayer/3.0.10/dist/index.min.css"/>
+	<script charset="utf-8" src="https://unpkg.byted-static.com/xgplayer/3.0.10/dist/index.min.js"></script>
+
+	<script charset="utf-8" src="https://unpkg.byted-static.com/xgplayer-hls/3.0.10/dist/index.min.js"></script>
+       <script>
+        const config = {
+          "id": "mse",
+            "width":document.body.clientWidth - 30,
+          "url": "https://1321784843.vod-qcloud.com/ba03a9cbvodcq1321784843/74b3a0c93270835012727875782/f0.m3u8",
+          "playsinline": true,
+          "poster": "//lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/byted-player-videos/1.0.0/poster.jpg",
+          "plugins": [],
+          "pip": true,
+            "autoplay": true
+        }
+        config.plugins.push(HlsPlayer)
+        let player = new Player(config);
+		let myInput = document.getElementById('myInput');
+		let playBtn = document.getElementById('playBtn');
+        playBtn.addEventListener('click',()=>{
+            const config = {
+                "id": "mse",
+                "width":document.body.clientWidth - 30,
+                "url": myInput.value,
+                "playsinline": true,
+                "poster": "",
+                "plugins": [],
+                "pip": true,
+                "x5-video-orientation": "landscape",
+                "x5-video-player-fullscreen": "true",
+                "x5-video-player-type": "h5",
+                "autoplay": true
+            }
+            config.plugins.push(HlsPlayer)
+            let player = new Player(config);
+        })
+      </script>  </body>
+</html>
